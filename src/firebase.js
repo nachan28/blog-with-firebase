@@ -15,5 +15,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GithubAuthProvider();
 const db = getFirestore(app);
+provider.addScope("repo");
 
 export { auth, provider, db };
