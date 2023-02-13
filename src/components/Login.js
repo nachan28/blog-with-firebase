@@ -7,7 +7,7 @@ export const Login = ({ setIsAuth }) => {
   const navigate = useNavigate();
   const loginWithGithub = () => {
     signInWithPopup(auth, provider).then((result) => {
-      console.log(result._tokenResponse);
+      console.log(result);
       setIsAuth(true);
       localStorage.setItem("isAuth", true);
       navigate("/");
@@ -20,3 +20,4 @@ export const Login = ({ setIsAuth }) => {
     </>
   );
 };
+
