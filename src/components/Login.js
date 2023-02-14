@@ -10,6 +10,7 @@ export const Login = ({ setIsAuth }) => {
       console.log(result);
       setIsAuth(true);
       localStorage.setItem("isAuth", true);
+      localStorage.setItem("user", result._tokenResponse.screenName)
       navigate("/");
     });
   };

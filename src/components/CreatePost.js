@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CreatePost.css";
 import { collection, addDoc } from "firebase/firestore";
-import { auth, db } from "../firebase";
+import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 export const CreatePost = ({ isAuth }) => {
@@ -12,7 +12,7 @@ export const CreatePost = ({ isAuth }) => {
     await addDoc(collection(db, "posts"), {
       title: title,
       postText: postText,
-      author: auth.currentUser.displayName,
+      author: localStorage.getItem("user"),
     });
     navigate("/");
   };

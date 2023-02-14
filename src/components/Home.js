@@ -15,7 +15,8 @@ const Home = () => {
   const deletePost = async (id) => {
     await deleteDoc(doc(db, "posts", id));
     window.location.href = "/";
-  }
+  };
+
   return (
     <div className="homePage">
       {postList.map((post) => {
@@ -24,12 +25,12 @@ const Home = () => {
             <div className="postHeader">
               <h1>{post.title}</h1>
             </div>
-            <div className="postTextContainer">
-              {post.postText}
-            </div>
+            <div className="postTextContainer">{post.postText}</div>
             <div className="nameAndDeleteButton">
               <h3>@{post.author}</h3>
-              <button onClick={() => deletePost(post.id)}>削除</button>
+              {post.author === localStorage.getItem("user") && (
+                <button onClick={() => deletePost(post.id)}>削除</button>
+              )}
             </div>
           </div>
         );
